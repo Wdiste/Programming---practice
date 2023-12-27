@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">freeCodeCamp Survey Form</h1>
+        <p id="description">Thank you for taking the time to help me learn web dev!</p>
+        <form id="survey-form">
+            <div class="form-group">
+                <label for="name" id="name-label">Name*</label>   
+                <input id="name" type="text" placeholder="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email" id="email-label">Email*</label> 
+                <input id="email" type="text" placeholder="email" required> <!--add detection of invalid email-->
+            </div>
+            <div class="form-group">
+                <label for="number" id="number-label">Age (optional)</label>
+                <input id="number" type="number" max="99" min="13" placeholder="age"> <!--add non number detection & min-max-->
+            </div>
+            <div class="form-group">
+                <label for="dropdown" id="dropdown-label"></label>
+                <select id="dropdown" >
+                    <option disabled selected value>Select current role</option>
+                    <option value="student">Student</option>   
+                    <option value="job">Full time job</option>   
+                    <option value="learner">Full time learner</option>   
+                    <option value="prefNo">prefer not to say</option>   
+                    <option value="other">Other</option>   
+                </select>
+            </div>
+            <div class="form-group">
+                <input id="definitely" type="radio" name="recommend" value="definitely" checked>Definitely
+                <input id="maybe" type="radio" name="recommend" value="maybe">Maybe
+                <input id="unsure" type="radio" name="recommend" value="unsure">Not sure
+            </div>
+            <div class="form-group">
+                <input id="frontEnd" type="checkbox" value="frontEnd">Front-end projects
+                <input id="backEnd" type="checkbox" value="backEnd">Back-end projects
+                <input id="data" type="checkbox" value="data">Data visualization
+                <input id="challenges" type="checkbox" value="challenges">Challenges
+                <input id="open" type="checkbox" value="open">Open source community
+                <input id="glitter" type="checkbox" value="glitter">Glitter help rooms
+                <input id="videos" type="checkbox" value="videos">Videos
+                <input id="city" type="checkbox" value="city">City meetups
+                <input id="wiki" type="checkbox" value="wiki">Wiki
+                <input id="forum" type="checkbox" value="forum">Forum
+                <input id="addCourse" type="checkbox" value="addCourse">Additional courses
+            </div>
+            <div class="form-group">
+                <p>Comments and suggestions?</p>
+                <textarea name="comments" id="comments" placeholder="Enter text here..."></textarea>
+            </div>
+            <button id="submit" type="submit"> Submit </button>
+        </form>
+    </div>
+</body>
+<script src="./index.js"></script>
+</html>
