@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./styles.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <navbar id="navbar">
+        <header>React documentation</header>
+        <ul>
+            <li><a href="#react" class="nav-link">What is react?</a></li>
+            <li><a href="#intro" class="nav-link">Intro/skills</a></li>
+            <li><a href="#create" class="nav-link">Create React app</a></li>
+            <li><a href="#components" class="nav-link">Components</a></li>
+            <li><a href="#router" class="nav-link">React router</a></li>
+            <li><a href="#state" class="nav-link">What is state?</a></li>
+        </ul>
+    </navbar>
+    <main id="main-doc">
+        <section class="main-section" id="react">
+            <header>What is React?</header>
+            <p>The first thing to learn about react is... What is it?</p>
+            <p>When coding websites, we know that the main languages are HTML, CSS, and Javascript.  React is a ui
+               library for building dynamic components. Html is a static language and cannot change itself which
+               means if you want to show new information after an event occurs you must load an entirely different 
+               page.  With the help of some clever javascript, prebuilt html can be replaced and reloaded, but 
+               React takes things to the next level.  Learn to make a basic website that immediately updates with 
+               the power of react!
+            </p>
+        </section>
+
+        <section class="main-section" id="intro">
+            <header>Introduction</header>
+            <p>React is just a library for the Javascript language, so before getting started, a few prerequisites are 
+               needed.
+            </p>
+            <ul>
+                <li>HTML</li>
+                    <p>HTML is the static component of websites. This is the blueprint of the page and contains all the
+                       data to be displayed.  A basic understanding of HTML elements and syntax is needed because JSX, javascript XML,
+                       is a modified way of writing Javascript that closely resembles HTML elemeents.
+                    </p>
+                <li>CSS</li>
+                    <p>CSS is the design element of web pages. If HTML is the engineering blueprint, CSS is the archetectural
+                       flair. After laying out your data in HTML, CSS is needed to style a page, usually to make the data easier to digest.
+                       React is no different in that you must still decorate the page in your desired dtyle. Similar to React, css 
+                       has its own abundance of libraries and technologies to help with design. (Bootstrap and Tailwind are two popular ones)
+                    </p>
+                <li>Javascript</li>
+                    <p>Javascript is the dynamic portion of a website. This language is what allows for interaction with the HTML.
+                       Click on a button? Javascript. Slide a volume slider? Javascript. Submit a login form? Javascript.  When using React, 
+                       HTML is replaced with a split for of Javascript/HTML called JSX.  Basically, all static data is written in the Javascript 
+                       file, allowing it to be updated.  JS syntax is important to know because that's where the bulk of React is written.
+                    </p>
+            </ul>
+        </section>
+
+        <section class="main-section" id="create">
+            <header>Create react app</header>
+            <p>With the skills listed above, you will have everything you need to use React. In addition to skills, 
+               you will need Node.js for your ide in order to get started.
+            </p>
+            <p>To begin, we will use the terminal commands to build an app. Traditionally, <code>npm create-react-app</code> &lt;your-directory&gt; was used 
+               to easily build a React app.  This method is still viable but many are switching to <code>npm create vite@latest</code>, which is suggested 
+               to build faster and be more effecient as projects grow larger in scale. Choose either method, but vite is considered  more up to date 
+               as create-react-app has not been updated in some time. After entering the creation command in the terminal, your app will be constructed 
+               with the basics of what you need.
+            </p>
+            <a id="react-doc" href="https://react.dev/" target="_blank">Please refer to official docs for more in depth info</a>
+        </section>
+
+        <section class="main-section" id="components">
+            <header>Components</header>
+            <p>A big part of using react is understanding components. A component can be thought of as a blueprint for an 
+               HTML page. For example, if you wanted to create a timer, you would create an HTML doc describing the timer display.
+               If you wanted to create a flash card for studying, you would write HTML and design your flash card with the question and corresponding answer. 
+               Now under normal circumstances, these two documents would exist seperate from eachother. What good is a timer if the 
+               device that the timer is in charge of is on a different page?
+            </p>
+            <p>This is where React comes in. Now these two seperate files can appear on the same page and be updated individually 
+               without refreshing the app. The following is an example of such a combination:
+            </p>
+            <pre>
+                <code>
+                    export default function MyApp() {
+                        return (
+                        &lt;div&gt;
+                            &lt;h1&gt;Flash card test!&lt;/h1&gt;
+                            &lt;MyTimer /&gt;
+                            &lt;MyFlashCard /&gt;
+                        &lt;/div&gt;
+                        );
+                    }</code>
+            </pre>
+            <p>Here we can see that both the <code>&lt;MyTimer&gt;</code> and the <code>&lt;MyFlashCard&gt;</code> components 
+               exist in the same document. The extra benefit in this is that each components retains its own scripts. Therefore, 
+               as long as your JS is functioning, the timer is activated it will countdown in realtime and will interact with the 
+               flashcard as designed. (e.g. reveal the answer after a given time)
+            </p>
+        </section>
+
+        <section class="main-section" id="router">
+            <header>React router</header>
+            <p>Another big cog in the React machine is the router. A simplified explanation is that traditionally, a change 
+               of page requires a new seerver request and thus a reload of the page. React handles this by fetching data not from 
+               a server, but from the app itself to instantly update data. An example of router code looks like this:
+            </p>
+            <pre>
+                <code>
+                    import ReactDOM from "react-dom/client";
+                    import { BrowserRouter, Routes, Route } from "react-router-dom";
+                    import MyTimer from "./pages/MyTimer";
+                    import MyFlashcard from "./pages/MyFlashcard";
+                    import Home from "./pages/Home";
+
+                    export default function App() {
+                    return (
+                        &lt;BrowserRouter&gt;
+                        &lt;Routes&gt;
+                            &lt;Route path="/" element={&lt;Home /&gt;}&gt;
+                            &lt;Route index element={&lt;Home /&gt;} /&gt;
+                            &lt;Route path="myTimer" element={&lt;MyTimer /&gt;} /&gt;
+                            &lt;Route path="myFlashCard" element={&lt;MyFlashCard /&gt;} /&gt;
+                            &lt;Route path="*" element={&lt;Home /&gt;} /&gt;
+                            &lt;/Route&gt;
+                        &lt;/Routes&gt;
+                        &lt;/BrowserRouter&gt;
+                    );
+                    }
+
+                    const root = ReactDOM.createRoot(document.getElementById('root'));
+                    root.render(&lt;App /&gt;);
+                </code>
+            </pre>
+            <p>This code may seem confusing at first, but once it is set up it will do all the heavy lifting 
+               for any pages you code. Understanding routing in vanilla JS will make this setup easier as well.
+            </p>
+        </section>
+
+        <section class="main-section" id="state">
+            <header>What is state?</header>
+            <p>The final major concept we will cover is State. When using React, a special kind of variable exists 
+               called State. Until you get used to using State, it will be a difficult concept to grasp. UseState is 
+               whats called a Hook, which is a method react uses to access features and parts of other components. 
+               Put simply, a state is a variable which is set and changed on an event. In the flashcard example, state 
+               could be used like this:
+            </p>
+            <ul>
+                <li>Syntax: <code>const [state, setState] = useState(initial value);</code></li>
+                <li>
+                    'state' will be replaced by whatever you name the variable. When used in the code, this will refer to the 
+                    value currently set.
+                </li>
+                <li>
+                    'setState' refers to the method used to change the value of 'state'. For example, if using colors as a state 
+                    variable, you can change the state to 'red' by using <code>setState('red');</code>.
+                </li>
+                <li>
+                    'useState' is the initial value given to the variable 'state'. 
+                </li>
+            </ul>
+            <pre>
+                <code>
+                    import React, { useState } from "react"; //State must be imported with React
+                    function flashcardGame() {
+                        cosnt questionList = [question 1, question 2...] //array loaded with questions
+                        const [question, setQuestion] = useState(0);     
+                        //initial state will be 0 to begin at first question in array
+
+                        &lt;button&gt; type="button" onClick={() => setQuestion(9)}>Skip to question 10&lt;/button&gt;
+                    }
+                </code>
+            </pre>
+            <p>State can be used in many powerful ways such as sharing variables between components and conditionally rendering 
+               components.
+            </p>
+        </section>
+
+        <footer>
+            <p>For more information, view documentation at these links:</p> 
+            <ul>
+                <li><a href="https://react.dev/">Official documentation for react</a></li>
+                <li><a href="https://www.w3schools.com/REACT/DEFAULT.ASP">w3schools react tutorial</a></li>
+                <li><a href="https://www.w3schools.com/react/react_state.asp">More on state from w3schools</a></li>
+            </ul>
+        </footer>
+    </main>
+</body>
+</html>
